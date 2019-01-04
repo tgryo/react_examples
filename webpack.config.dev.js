@@ -23,6 +23,21 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'svg-inline-loader'
+      },
+      {
+        test:  /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath : 'images/',
+                publicPath : function(path){
+                    return '../' + path;
+                }
+            }
+          }
+        ]
       }
     ]
   }
